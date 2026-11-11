@@ -18,11 +18,13 @@ Each specification should contain:
 
 Finish planning the bounded task and its specification before writing tests or implementation code. For behavior changes, write unhappy-path tests first and run them to confirm failures for the intended behavioral reasons. Write happy-path tests before implementing successful behavior, make the tests pass, then refactor and rerun relevant checks. Record actual failing/passing results; use document/link checks for documentation-only tasks. Update this index as specifications are added. `TASKS.md`, when created, will track scheduling and dependencies with links here.
 
-Implement each specification on its own branch, keeping the spec, implementation, tests, and documentation together. Merge completed work into the integration branch through the required review process, then check the integrated result. Follow company and repository policy for naming, required approvals, CI, and merge strategy; the course example uses `spec/NNN-short-task-name`. See [the integration workflow](../../PLAN.md#18-one-specification-per-branch-and-verified-integration).
+Implement each specification on its own branch, keeping the spec, implementation, tests, and documentation together. For this repository, commit and merge into local `main` after the scoped implementation and required engineering checks/reviews pass, then check the integrated result. Keep pending learner walkthroughs explicitly unverified; full course completion is a separate evidence requirement. Follow company and repository policy for naming, required approvals, CI, and merge strategy; the course example uses `spec/NNN-short-task-name`. See [the integration workflow](../../PLAN.md#18-one-specification-per-branch-and-verified-integration).
 
 Include the completion checkpoint in each stage specification: required checks pass, the completed scoped work is committed locally, and the commit hash is reported or retained as evidence. Apply this both to course authoring and to the learner's stage outputs. A work-in-progress commit must not be presented as verified completion.
 
 Course exercises introduce the branch-to-merge convention in Stage 4 with the small software factory; earlier stages do not require that exercise. Specifications authored by a learner belong under `docs/specs/` in that learner project's root; this directory describes work on the course and platform itself.
+
+For learners, stage commits preserve progress and the factory exercise merges into a disposable lab integration branch. Remind learners to merge into production `main` only when the change is production-ready under company policy, including its required checks and approvals. See [when to merge into main](../../PLAN.md#when-to-merge-into-main).
 
 ## Specification index
 

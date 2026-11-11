@@ -4,6 +4,16 @@ Follow the creation of **From Developer to Agentic Developer**, a hands-on cours
 
 Entries cover decisions, working software, failures, and verified progress. Newest entries appear first.
 
+## 2026-11-11 — Distinguishing development integration from production main
+
+Clarified [when to merge into main](PLAN.md#when-to-merge-into-main). For this repository, completed implementations are committed and merged into local `main` after required engineering checks/reviews pass, then the integrated result is verified. The whole course need not be finished first. Pending creator walkthroughs remain explicitly unverified and still block claims of verified course completion.
+
+The learning path teaches a production-readiness rule: a stage commit preserves progress, while production `main` receives changes only after the company's acceptance, verification, review, and release requirements are met. Stage 4's factory exercise uses a disposable lab integration branch. Passing mock tests or obtaining an agent review does not certify production readiness.
+
+**Verification:** checked updated documentation links and consistency across the plan, instructions, README, and Stage 1 spec. No commit, merge, push, deployment, or runtime test was performed during this policy update.
+
+**Next:** settle the console language and implement Stage 1, keeping implementation integration and learner walkthrough status separate.
+
 ## 2026-11-11 — Requiring a commit after each completed stage
 
 Made the commit checkpoints explicit in the [plan](PLAN.md#commit-checkpoints-for-authors-and-learners), shared working instructions, README, and specification guide. Both course authoring stages/delivery milestones and learner stages must finish with their required checks and a scoped local Git commit. The resulting hash identifies the verified checkpoint; a work-in-progress commit does not establish completion.
