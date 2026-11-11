@@ -1,0 +1,18 @@
+
+> stage-1-solution@0.1.0 test
+> vitest run --maxWorkers=1
+
+
+ RUN  v5.1.0 <repo>/labs/01-first-agent/solution
+
+ ✓ test/unhappy.test.ts (35 tests) 12ms
+ ✓ test/cli.test.ts (10 tests) 7ms
+ ✓ test/happy.test.ts (5 tests) 7ms
+
+ Test Files  3 passed (3)
+      Tests  50 passed (50)
+   Start at  09:15:27
+   Duration  839ms (import 78%, transform 11%, tests 6%, worker 4%)
+
+    Isolate  3 workers spawned · ~131ms startup each (spawn + environment, per file)
+             at least ~262ms faster with isolate: false — reuses workers across files instead of one per file

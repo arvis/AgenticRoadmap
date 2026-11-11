@@ -1,0 +1,8 @@
+{
+  "name": "issue-reader",
+  "responsibilities": "Look up the requested project issue and summarize it.",
+  "context": "Only the local read-only fixture is available.",
+  "allowedTools": ["get_issue"],
+  "completion": "Return a short summary containing the issue ID after reading the tool result.",
+  "clarification": "Ask the person for an issue ID when none is supplied."
+}

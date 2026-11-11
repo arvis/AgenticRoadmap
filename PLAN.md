@@ -84,7 +84,7 @@ Keep the development workflow independent of the coding assistant. Teach common 
 ## 5. Technical architecture
 **Preferred stack:** TypeScript, Next.js App Router, React, Tailwind CSS, MDX for educational content, Zod for validation, Vitest for unit tests, Playwright for UI smoke tests, GitHub Actions for CI.
 
-**Console-app language proposal:** TypeScript running on Node.js, consistent with the existing preferred stack. Confirm this choice before Stage 1 implementation; the current specification's npm commands and TypeScript contracts describe that proposal. See [the language decision proposal](docs/adr/0001-console-app-language.md). Tool-neutral teaching means independence from the editor and coding assistant; the first lab will have one implementation language.
+**Console-app language:** TypeScript running on Node.js, selected for the requested Stage 1 implementation and consistent with the preferred stack. See [the language decision](docs/adr/0001-console-app-language.md). Tool-neutral teaching means independence from the editor and coding assistant; the first lab has one implementation language.
 
 Keep content and roadmap topology as versioned typed data. Separate the platform from runnable labs:
 - `apps/web/` — interactive roadmap website
@@ -181,7 +181,6 @@ Secondary: a hiring manager can clone the repo, run the platform and first lab, 
 3. First exercise package and recorded creator walkthrough, followed by the website vertical slice.
 
 ## 13. Decisions to confirm
-- Console-app implementation language: proposed TypeScript on Node.js; see [the rationale and alternatives](docs/adr/0001-console-app-language.md).
 - Public repository name (default: `from-developer-to-agentic-developer`).
 - Whether to use the existing Agentic Factory as an external capstone case study (recommended) or integrate it later.
 - Whether content should be English only for v1 (recommended).

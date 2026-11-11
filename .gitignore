@@ -1,0 +1,8 @@
+**/node_modules/
+**/dist/
+**/artifacts/
+.work/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

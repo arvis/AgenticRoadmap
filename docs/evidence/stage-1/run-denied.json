@@ -1,0 +1,23 @@
+{
+  "status": "FAILED",
+  "error": "TOOL_DENIED",
+  "steps": 1,
+  "toolCalls": 0,
+  "trace": [
+    {
+      "sequence": 1,
+      "event": "model",
+      "detail": "delete_issue"
+    },
+    {
+      "sequence": 2,
+      "event": "tool_denied",
+      "detail": "delete_issue"
+    },
+    {
+      "sequence": 3,
+      "event": "terminated",
+      "detail": "TOOL_DENIED"
+    }
+  ]
+}

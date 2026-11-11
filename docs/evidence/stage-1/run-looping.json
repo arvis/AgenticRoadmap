@@ -1,0 +1,58 @@
+{
+  "status": "FAILED",
+  "error": "STEP_LIMIT",
+  "steps": 3,
+  "toolCalls": 3,
+  "trace": [
+    {
+      "sequence": 1,
+      "event": "model",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 2,
+      "event": "tool_allowed",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 3,
+      "event": "tool_result",
+      "detail": "{\"id\":\"ISSUE-001\",\"title\":\"Repair the build\",\"status\":\"open\",\"description\":\"The build fails because a required type is missing.\"}"
+    },
+    {
+      "sequence": 4,
+      "event": "model",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 5,
+      "event": "tool_allowed",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 6,
+      "event": "tool_result",
+      "detail": "{\"id\":\"ISSUE-001\",\"title\":\"Repair the build\",\"status\":\"open\",\"description\":\"The build fails because a required type is missing.\"}"
+    },
+    {
+      "sequence": 7,
+      "event": "model",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 8,
+      "event": "tool_allowed",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 9,
+      "event": "tool_result",
+      "detail": "{\"id\":\"ISSUE-001\",\"title\":\"Repair the build\",\"status\":\"open\",\"description\":\"The build fails because a required type is missing.\"}"
+    },
+    {
+      "sequence": 10,
+      "event": "terminated",
+      "detail": "STEP_LIMIT"
+    }
+  ]
+}

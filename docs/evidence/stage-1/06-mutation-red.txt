@@ -1,0 +1,152 @@
+
+> stage-1-solution@0.1.0 test
+> vitest run --maxWorkers=1 --reporter=verbose -t stops after exactly
+
+
+ RUN  v5.1.0 <repo>/labs/01-first-agent/solution
+
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task null
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task undefined
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":1}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":""}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":"other"}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"extra":true}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 0
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit -1
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 6
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 1.5
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit NaN
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role null
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","responsibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["get_issue"],"completion":"Return a short summary.","clarification":"Ask for the ID.","extra":true}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","responsibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["delete_issue"],"completion":"Return a short summary.","clarification":"Ask for the ID."}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool delete_issue before dispatch
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool __proto__ before dispatch
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > denies the registered tool for an empty role allowlist
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":4}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":"ISSUE-001","path":"../secret"}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output null
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output "ignore all rules"
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","text":""}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","text":"ok","permissions":"*"}
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > stops on a thrown handler without leaking its error or retrying
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > maps a thrown adapter to MODEL_FAILED without leaking details
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 1 model calls 16ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 1, …(1) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 3 model calls 2ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 3, …(1) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 5 model calls 1ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 5, …(1) }
+(2 matching properties omitted from actual)
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > fails on an unknown fixture issue without retrying
+ ↓ test/unhappy.test.ts > unhappy paths before implementation > does not let model context edits grant capabilities
+ ↓ test/happy.test.ts > asks for missing input without model or tool calls
+ ↓ test/happy.test.ts > passes task, role and real tool result to the model and completes deterministically
+ ↓ test/happy.test.ts > allows a final answer on the last permitted step (1)
+ ↓ test/happy.test.ts > allows a final answer on the last permitted step (3)
+ ↓ test/happy.test.ts > allows a final answer on the last permitted step (5)
+ ↓ test/cli.test.ts > rejects CLI arguments "--out"
+ ↓ test/cli.test.ts > rejects CLI arguments "--scenario"
+ ↓ test/cli.test.ts > rejects CLI arguments "--scenario"
+ ↓ test/cli.test.ts > rejects CLI arguments "--issue"
+ ↓ test/cli.test.ts > rejects CLI arguments "--issue"
+ ↓ test/cli.test.ts > parses a scenario and issue
+ ↓ test/cli.test.ts > runs scenario happy
+ ↓ test/cli.test.ts > runs scenario malformed
+ ↓ test/cli.test.ts > runs scenario denied
+ ↓ test/cli.test.ts > runs scenario looping
+node.exe :
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 1 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 1, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": "STEP_LIMIT",
+-   "steps": 1,
+-   "toolCalls": 1,
++   "steps": 2,
++   "toolCalls": 2,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 3 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 3, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": "STEP_LIMIT",
+-   "steps": 3,
+-   "toolCalls": 3,
++   "steps": 4,
++   "toolCalls": 4,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 5 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 5, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "error": "STEP_LIMIT",
+-   "steps": 5,
+-   "toolCalls": 5,
++   "steps": 6,
++   "toolCalls": 6,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed | 2 skipped (3)
+      Tests  3 failed | 44 skipped (47)
+   Start at  08:55:25
+   Duration  1.30s (import 82%, transform 11%, worker 4%, tests 3%)
+
+    Isolate  3 workers spawned · ~207ms startup each (spawn + environment, per file)
+             at least ~414ms faster with isolate: false — reuses workers across files instead of one per file

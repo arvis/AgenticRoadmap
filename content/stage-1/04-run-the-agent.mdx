@@ -1,0 +1,29 @@
+# 4. Implement and inspect the bounded agent
+
+**Task:** make your tests pass with explicit control flow. **Prerequisite:** captured unhappy/happy red evidence. **Estimate:** 60–90 minutes, unvalidated.
+
+## Do
+
+1. Fill `role.json`: responsibilities, fixture context, completion/clarification rules, and `allowedTools: ["get_issue"]`. Role prose guides behavior; membership checks govern dispatch.
+2. Replace the placeholder in `src/agent.ts`. Keep the supplied contracts, fixture, scripted model, and CLI plumbing. Use strict schemas for task, role, responses, and arguments. For example, `z.strictObject({issueId: z.string().regex(/^ISSUE-\d{3}$/)})` rejects extra fields and malformed IDs. See [Zod basics](https://zod.dev/basics).
+3. Validate task/config/role before model execution. Missing ID asks without calls. Increment steps once per model call; validate the response; return finals or authorize/validate a tool request before dispatch. Use the injected handler or supplied `getIssue`. Stop on rejection/failure, with no raw exception text or retry.
+4. Copy role/results before passing model context. Model edits must not grant permissions. Record sequenced model/tool/termination events. Count actual handler invocations, including ones that throw. Stop before an extra model call; accept final at the limit.
+5. Implement minimally, then run:
+
+```sh
+npm run typecheck
+npm test -- --reporter=verbose
+npm run build
+npm run demo -- --scenario happy --issue ISSUE-001
+npm run demo -- --scenario happy
+```
+
+6. Record green output and source snapshot. Inspect `artifacts/happy.json` after each run; retain evidence before the second run overwrites it. Lookup has 2 model steps/1 handler call; missing input has 0/0 and `NEEDS_INPUT`.
+
+## Check
+
+Happy trace: `model`, `tool_allowed`, `tool_result`, `model`, `terminated`. The answer uses the actual returned issue. Do not invent timing, token, or cost measurements. The CLI explicitly loads role data; coding-assistant instruction discovery is separate.
+
+**Expected output:** passing tests, compiled CLI, summary, clarification, and trace evidence. **Troubleshooting:** rebuild before running compiled demos after edits. Investigate remaining failures without weakening acceptance criteria. Attempt this before reading the separate solution.
+
+Next: [failures, repair, and commit](05-inspect-break-and-repair.mdx).

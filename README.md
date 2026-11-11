@@ -8,9 +8,9 @@ This repository will contain the course materials, independently runnable TypeSc
 
 ## Current status
 
-**Early development: planning and documentation.** The website and labs have not been implemented, and no course walkthrough or benchmark has been completed yet. There is no runnable application or installation command at this stage.
+**Stage 1 console lab implemented and automatically checked; creator walkthrough pending.** Start with [the Stage 1 lab](labs/01-first-agent/README.md). It contains five lessons, an unfinished learner starter, and a separate reference solution. The website and later stages are not implemented. No real-model benchmark or completed personal learner walkthrough is claimed.
 
-The next milestone is one complete exercise, verified from a fresh learner starting point. The website will follow that exercise. The seven-stage path below is the planned curriculum.
+The next checkpoint is the creator completing Stage 1 from the starter. The website follows that exercise. See [actual verification and pending checks](docs/walkthroughs/stage-1.md).
 
 - [Development log](DEVLOG.md): decisions, progress, failures, and results as the project develops.
 - [Project plan](PLAN.md): detailed curriculum, architecture, milestones, and completion criteria.
@@ -60,20 +60,32 @@ Passing the exercises will demonstrate the tested behavior under the documented 
 
 ## Running locally
 
-Setup instructions will be added with the first runnable exercise.
+To preview the completed mock agent from the repository root:
+
+```sh
+cd labs/01-first-agent/solution
+npm ci
+npm run check:setup
+npm run typecheck
+npm test
+npm run build
+npm run demo -- --scenario happy --issue ISSUE-001
+```
+
+Author checks used Windows, Node 24.11.0, npm 11.6.1. To take the course yourself, begin with [the learner guide](labs/01-first-agent/README.md) and a fresh starter copy before consulting the solution.
 
 The planned website and automated checks will run without AI API credentials. Every lab will include deterministic offline mock mode; real model providers may be supported as an optional path. Mock results and actual model measurements will be labeled separately.
 
 ## Planned technology
 
-- **Console labs (proposed):** TypeScript on Node.js, Zod, and Vitest; [language rationale](docs/adr/0001-console-app-language.md), pending confirmation before implementation.
+- **Console labs:** TypeScript on Node.js, Zod, and Vitest; [language decision](docs/adr/0001-console-app-language.md).
 - **Website:** Next.js App Router, React, Tailwind CSS, and MDX.
 - **Verification:** unit tests, Playwright smoke tests, and GitHub Actions.
 - **Progress:** anonymous local browser storage, with no accounts or database in v1.
 
 The intended structure separates `apps/web/`, `content/`, `labs/`, and `docs/`. See the [plan](PLAN.md) for details.
 
-Project-level direction lives in `PLAN.md`; detailed implementation specifications live in `docs/specs/`. Learner projects will use the same convention within their own project roots. The [specification index](docs/specs/README.md) is in place; application and lab scaffolding is still pending.
+Project-level direction lives in `PLAN.md`; detailed implementation specifications live in `docs/specs/`. Learner projects use the same convention within their own roots. Stage 1 content and standalone packages exist; website scaffolding is still pending.
 
 ## Later goal
 
@@ -83,7 +95,7 @@ A course-specific VS Code extension may be added after the core course and conso
 
 Read the [devlog](DEVLOG.md) for dated updates on what changed, what was actually run, what failed, and what comes next. Entries distinguish planned work from implemented and verified work.
 
-Feedback on the curriculum, task briefs, reproducibility, and safeguards is welcome. The immediate priority is a complete first exercise and the creator's walkthrough of it.
+Feedback on the curriculum, task briefs, reproducibility, and safeguards is welcome. The immediate priority is the creator's fresh-start walkthrough of the implemented first stage.
 
 ## License
 

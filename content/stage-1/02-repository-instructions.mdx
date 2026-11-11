@@ -1,0 +1,32 @@
+# 2. Tell the coding assistant how to work here
+
+**Task:** make the workflow reusable across sessions. **Prerequisite:** completed planning checkpoint. **Estimate:** 15–25 minutes, unvalidated.
+
+## Do
+
+1. Complete the learner `AGENTS.md`: plan/spec links, layout, commands, review/evidence rules, company policy, tool boundaries, and completion commit. Keep it concise.
+2. Run from your learner project:
+
+```sh
+npm ci
+npm run check:setup
+npm run typecheck
+npm run build
+npm run demo -- --scenario happy --issue ISSUE-001
+```
+
+The demo intentionally exits 1 with `NOT_IMPLEMENTED`. Installation may require network; other commands need no credentials. Use Node 24.x (24.11 or later) and npm 11.x; author checks used 24.11.0/11.6.1 on Windows.
+
+3. Choose optional tool setup. Codex uses `AGENTS.md`; `CODEX.md` needs nondefault configuration. Claude Code can use the supplied one-line `CLAUDE.md` import. Check installed behavior against the [OpenAI guide](https://learn.chatgpt.com/docs/agent-configuration/agents-md) or [Claude Code guide](https://code.claude.com/docs/en/memory). Another approved tool may need another loader; keep the common rules consistent.
+4. In Codex, start a fresh session in the learner folder and inspect available instruction sources/session metadata. In Claude Code, use its documented `/context all` inspection to check the shared import. Ask for a test plan without implementation changes, then inspect its response against your rules. Manual learners skip this step.
+5. Record version, observed sources, task, actual response/diff, checks, and limitations in `docs/tool-session.md`. An assistant merely saying it loaded a file is insufficient proof of automatic discovery. Keep unavailable checks unverified.
+
+## Check
+
+Your file explicitly says: finish planning; unhappy-path tests first; observe expected failures; add success tests before implementation; implement/check/refactor; report evidence; commit completed work; follow company policy. The bounded planning task should leave implementation unchanged.
+
+Instructions guide the assistant helping you develop. They do not create reviewer agents or enforce permissions. The console CLI explicitly loads `role.json`; your runtime must enforce its tool membership and limit.
+
+**Expected output:** working instructions and separately labeled optional loading evidence. **Troubleshooting:** parent/global files and tool versions may affect loading; inspect documented sources and restart when needed. Mock-agent tests cannot establish assistant-file loading.
+
+Next: [tests before behavior](03-unhappy-path-tests-first.mdx).

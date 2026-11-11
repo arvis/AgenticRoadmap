@@ -30,4 +30,4 @@ For learners, stage commits preserve progress and the factory exercise merges in
 
 | Specification | Scope | Status |
 | --- | --- | --- |
-| [001 — Stage 1](001-stage-1.md) | Five hands-on lessons, standalone starter/solution, bounded mock agent, test-first evidence, and creator walkthrough | Specified; console language decision pending; implementation and walkthrough not started |
+| [001 — Stage 1](001-stage-1.md) | Five hands-on lessons, standalone starter/solution, bounded mock agent, test-first evidence, and creator walkthrough | Implementation checked locally; creator walkthrough pending |

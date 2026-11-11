@@ -1,0 +1,35 @@
+# 1. Finish planning before code
+
+**Task:** turn a vague request into a task another developer could implement and verify. **Prerequisites:** programming, Git, terminal/editor, supplied starter. No assistant needed. **Estimate:** 30–45 minutes, unvalidated by a creator walkthrough.
+
+## Prepare your own copy
+
+From `labs/01-first-agent/`, copy `starter/` to a fresh learner folder, excluding `node_modules`, `dist`, and `artifacts`. In PowerShell:
+
+```powershell
+$courseLab = (Get-Location).Path
+$learnerProject = Join-Path $env:USERPROFILE 'Documents\my-first-agent'
+if (Test-Path -LiteralPath $learnerProject) { throw 'Choose a fresh destination.' }
+New-Item -ItemType Directory -Path $learnerProject | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $courseLab 'starter') -Force |
+  Where-Object { $_.Name -notin @('node_modules', 'dist', 'artifacts') } |
+  Copy-Item -Destination $learnerProject -Recurse
+Set-Location -LiteralPath $learnerProject
+```
+
+Use a company-approved location. Retain the original course directory path for the final checker. Choose Codex, Claude Code, another approved assistant, or manual work in your optional session notes. No personal information is required.
+
+## Do
+
+1. Read [the task](../../labs/01-first-agent/TASK.md) and your supplied `PLAN.md`. Write at least three clarification questions before reading [the stakeholder answers](../../labs/01-first-agent/CLARIFICATIONS.md).
+2. Fill your `docs/specs/001-first-agent.md`: scope/exclusions, contracts, role authority, failure codes, exact step boundary, implementation steps, and numbered acceptance criteria with a test/command for each.
+3. Settle answers with the worksheet. Complete `docs/planning-readiness.md`, recording date and remaining questions. Do not write tests or implementation while blocking questions remain.
+4. Inspect the supplied contracts. Reading the unfinished starter is allowed; preserve the completed plan before changing behavior.
+
+## Check
+
+Can your specification decide what happens to a missing ID, a denied tool, and a final answer on the last permitted step without guessing? Revise it if needed. Planning readiness is a process record, not a technical editor lock or proof of runtime behavior.
+
+**Expected output:** completed task specification and readiness record. **Troubleshooting:** use stakeholder answers rather than waiting for an instructor. Document bounded decisions consistent with those answers. Update the spec before implementing changed requirements.
+
+Next: [repository instructions](02-repository-instructions.mdx).

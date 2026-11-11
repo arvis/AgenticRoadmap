@@ -1,6 +1,6 @@
 # Repository working instructions
 
-This repository contains the plan and documentation for a hands-on course in agentic development. Application and lab code have not been scaffolded yet.
+This repository contains a hands-on course in agentic development. Stage 1 lessons, starter, and reference console lab are implemented; the creator walkthrough and website are pending.
 
 ## Read before work
 
@@ -40,5 +40,5 @@ This repository contains the plan and documentation for a hands-on course in age
 
 - Report changed files, commands actually run, observed results, and remaining limitations. Never fabricate tests, benchmarks, or learner walkthroughs.
 - Update the devlog after meaningful progress. Keep architectural decisions in ADRs when needed.
-- No application setup or test commands exist yet. Add real commands when the relevant scaffold is implemented and verified.
+- Stage 1 packages are standalone: from `labs/01-first-agent/solution`, use `npm ci`, `npm run check:setup`, `npm run typecheck`, `npm run build`, and `npm test`. From the lab directory, run `node checks/acceptance.mjs solution`. The starter intentionally returns NOT_IMPLEMENTED and has no solved behavior tests. No root workspace or website commands exist yet.
 - Use one agent by default; delegate only when explicitly authorized by the user or applicable instructions.

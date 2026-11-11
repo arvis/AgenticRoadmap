@@ -1,7 +1,7 @@
 # 001 — Stage 1: plan, test, and run a first agent
 
-Status: specified; implementation and learner walkthrough not started.
-Language decision: TypeScript on Node.js is proposed; confirm before implementation.
+Status: implementation checked locally; creator learner walkthrough pending. See [actual evidence and criterion status](../walkthroughs/stage-1.md).
+Language decision: TypeScript on Node.js selected for the requested implementation.
 Created: 2026-11-11.
 Development branch: `spec/001-stage-1`.
 
@@ -56,7 +56,7 @@ Detailed planning is for this bounded task; it does not require fully specifying
 
 ## 4. Deliverables and file boundaries
 
-Create the following during implementation. Paths below describe planned files, not existing artifacts:
+Implemented file boundaries (the walkthrough record explicitly separates author evidence from pending creator work):
 
 ```text
 content/stage-1/
@@ -88,7 +88,7 @@ labs/01-first-agent/
 docs/walkthroughs/stage-1.md       Actual creator walkthrough and limitations
 ```
 
-Both starter and solution must be independently installable with their own locked dependencies. Keep the lab independent of a root workspace, website package, or globally installed TypeScript/test runner. The proposed language/runtime is TypeScript on Node.js, using Zod and Vitest as planned; see [the language proposal](../adr/0001-console-app-language.md). Confirm it before scaffolding or writing runtime tests. If another language is chosen, revise this specification and its commands first. Select compatible versions during implementation, commit the lockfiles, and document the Node/npm versions actually used; do not describe untested versions as supported. No course-specific editor extension is required to complete the lab.
+Both starter and solution are independently installable with locked dependencies and no root workspace/website/global compiler dependency. The selected language/runtime is TypeScript on Node.js with Zod and Vitest; see [the language decision](../adr/0001-console-app-language.md). Author checks used Windows, Node 24.11.0, npm 11.6.1, TypeScript 7.0.2, Zod 4.6.7, Vitest 5.1.0, and Node types 24.19.2. Other environments are unverified. No course-specific editor extension is required.
 
 Starter contracts and placeholder exports must compile so learners can write behavior tests without missing-import failures. The unfinished agent may return a structured `NOT_IMPLEMENTED` failure; it must not contain the finished control flow, validation logic, role policy, or passing behavior tests. An assertion comparing the specified behavior with `NOT_IMPLEMENTED` can demonstrate missing behavior; a broken harness cannot.
 
@@ -114,6 +114,8 @@ In an available, approved assistant, record its version, active instruction sour
 The custom lab explicitly loads its role configuration. It does not automatically inherit a coding assistant's repository-instruction discovery. Written guidance is distinct from the runtime controls below.
 
 ## 6. Runtime contract
+
+Implementation decisions settled before coding: use synchronous injected model/tool functions, strict Zod objects, and a result with `status`, optional `answer`/`question`/`error`, `steps`, `toolCalls`, and sequenced `trace`. The role is supplied as parsed JSON by the CLI, not discovered by the agent. Model responses use `{type: "tool_call", name, input}` or `{type: "final", text}`; provider throws map to `MODEL_FAILED`. Final text is nonempty and at most 500 characters. Invalid CLI options fail before executing or writing an artifact. CLI artifacts are an explicit trusted host operation, not an agent write capability. Dependency installation can require network; a verification-only Node preload guard will disable standard Node network APIs for the recorded offline run, with its limits stated. The creator walkthrough remains a separate human activity.
 
 ### Task and role
 
@@ -148,7 +150,7 @@ This bounded synchronous mock loop demonstrates step limits. It does not establi
 
 ## 7. Scenarios and command contract
 
-Both project variants must expose the following scripts after implementation. These are proposed commands to implement, not commands currently available in the repository:
+Both project variants expose these commands. The starter remains deliberately unfinished until the learner implements it:
 
 | Command from the project root | Required behavior |
 | --- | --- |
@@ -212,7 +214,7 @@ No acceptance row is passed merely because its evidence file exists. Check the r
 
 ## 10. Implementation order
 
-1. Confirm the console-app language, then finalize the task brief, clarification worksheet, lesson actions, contract, and acceptance expectations from this spec. Keep planned files/results labeled as such.
+1. Select the existing TypeScript/Node design under the implementation request, then finalize the brief, clarification worksheet, lesson actions, contract, and acceptance expectations before coding. Keep unobserved results labeled as such.
 2. Set up standalone package tooling, types, unfinished entry points, and evidence/planning templates. Verify setup before behavior work.
 3. Write and run reference unhappy-path tests, then happy-path tests, before implementing the corresponding runtime behavior. Record actual failures.
 4. Implement validation, the fixed tool registry, role checks, the bounded mock loop, result/trace handling, and the CLI. Run checks and refactor.
@@ -238,12 +240,12 @@ End the learner instructions with a basic local commit checkpoint: inspect `git 
 
 Use development branch `spec/001-stage-1` for this specification and its future implementation. At initial specification authoring, the repository had no commits and existing untracked planning files were preserved; that was the initial state, not a standing description of current history. Inspect the current Git state before implementation. Commit the scoped implementation and merge into local `main` after required engineering checks/reviews pass, then verify integration. Preserve unrelated changes and report pending creator walkthroughs separately. Follow [company and repository integration policy](../../PLAN.md#18-one-specification-per-branch-and-verified-integration); this authoring workflow is separate from the learner's production-readiness rule.
 
-The specification depends on the agreed project plan, shared working instructions, and confirmation of the console-app language, not on the website or later stages. TypeScript on Node.js remains the proposed choice. Detailed dependency versions and verified environment support will be selected and recorded during implementation. Website work, a VS Code extension, and remote publication are outside this task.
+The implementation uses the agreed project plan, shared instructions, and selected TypeScript/Node design, without depending on the website or later stages. Versions and observed support are recorded above. Website work, a VS Code extension, and remote publication are outside this task.
 
 Current evidence:
 
-- Specification, index, and devlog written; local documentation links checked.
-- Implementation: not started.
-- Runtime tests, failing/passing evidence, CLI runs, and offline checks: not run.
-- Creator learner walkthrough and optional assistant-loading experiment: not run.
-- All S1 acceptance criteria: pending implementation and evidence.
+- Five lessons, task/clarification worksheets, starter/solution packages, scripts, tests, and independent checker implemented.
+- Author red/green, controlled defect/recovery, CLI results, clean installs, and guarded-network checks recorded in [the evidence index](../evidence/stage-1/README.md).
+- Final author suite: 50 tests passing; independent solution acceptance: 16 checks passing; starter is correctly rejected as incomplete.
+- Creator learner walkthrough, learner-authored test history/checkpoint, and fresh assistant-loading experiment: pending.
+- See [criterion-level status](../walkthroughs/stage-1.md); implementation checks do not establish full course-stage verification.

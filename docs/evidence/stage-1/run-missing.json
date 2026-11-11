@@ -1,0 +1,13 @@
+{
+  "status": "NEEDS_INPUT",
+  "question": "Which issue ID should I look up?",
+  "steps": 0,
+  "toolCalls": 0,
+  "trace": [
+    {
+      "sequence": 1,
+      "event": "terminated",
+      "detail": "NEEDS_INPUT"
+    }
+  ]
+}

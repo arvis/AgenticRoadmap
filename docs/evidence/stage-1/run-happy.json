@@ -1,0 +1,33 @@
+{
+  "status": "COMPLETED",
+  "answer": "ISSUE-001: Repair the build (open). The build fails because a required type is missing.",
+  "steps": 2,
+  "toolCalls": 1,
+  "trace": [
+    {
+      "sequence": 1,
+      "event": "model",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 2,
+      "event": "tool_allowed",
+      "detail": "get_issue"
+    },
+    {
+      "sequence": 3,
+      "event": "tool_result",
+      "detail": "{\"id\":\"ISSUE-001\",\"title\":\"Repair the build\",\"status\":\"open\",\"description\":\"The build fails because a required type is missing.\"}"
+    },
+    {
+      "sequence": 4,
+      "event": "model",
+      "detail": "final"
+    },
+    {
+      "sequence": 5,
+      "event": "terminated",
+      "detail": "COMPLETED"
+    }
+  ]
+}

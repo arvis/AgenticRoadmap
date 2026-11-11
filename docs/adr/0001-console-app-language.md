@@ -1,13 +1,13 @@
 # 0001 — Console-app implementation language
 
-Status: proposed; awaiting the language decision before implementation.
+Status: selected for implementation under the 2026-11-11 request to implement the existing TypeScript specification.
 Date: 2026-11-11.
 
 ## Context
 
 Stage 1 needs a small terminal application with explicit task, role, tool, and result contracts; deterministic offline scenarios; and behavior tests. The [project plan](../../PLAN.md#5-technical-architecture) already prefers TypeScript for labs and the website. The author has a Java/backend background. An optional VS Code extension is a later goal.
 
-## Proposal
+## Decision
 
 Use TypeScript on Node.js for the console application, with Zod for runtime validation and Vitest for tests as already proposed in the plan. Keep the CLI separate from the agent/tool logic so future interfaces can invoke the same behavior. Compile/typecheck explicitly; TypeScript types do not replace validation at runtime.
 
@@ -25,7 +25,7 @@ The deciding criteria are teaching clarity, reproducible local setup, explicit c
 
 ## Consequences and decision status
 
-- Confirm the language before scaffolding or writing runtime tests. If another language is selected, update the plan, Stage 1 spec, commands, and test tooling first.
+- Implement the existing TypeScript/Node.js design. Any later language change requires updating the plan, specification, commands, and test tooling first.
 - Ship one language track initially; additional language variants require separate scope decisions.
 - Keep the course independent of any particular coding assistant or editor.
 - Select and record actual dependency/runtime versions during implementation.

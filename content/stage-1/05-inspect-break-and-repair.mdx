@@ -1,0 +1,45 @@
+# 5. Inspect failures, repair a defect, and commit
+
+**Task:** prove limits and preserve the stage. **Prerequisite:** green behavior tests. **Estimate:** 30–45 minutes, unvalidated.
+
+## Do
+
+1. Run and inspect these deliberate failures from the learner project:
+
+```sh
+npm run demo -- --scenario malformed --issue ISSUE-001
+npm run demo -- --scenario denied --issue ISSUE-001
+npm run demo -- --scenario looping --issue ISSUE-001
+```
+
+All intentionally exit 1. Expect `INVALID_TOOL_INPUT` at 1 step/0 handler calls, `TOOL_DENIED` at 1/0, and `STEP_LIMIT` at 3/3. Retain artifacts before overwriting them. No shell command is an agent capability.
+
+2. After a green baseline deliberately permit one extra model call: change `steps < maxSteps` to `steps <= maxSteps` (or the equivalent in your implementation). Run your limit tests, build, and run looping again. Inspect the extra step and assertion failure. Record this mutation after baseline separately from original test-first evidence.
+3. Restore the boundary, run typecheck/tests/build, record green results, and refactor only with checks staying green.
+4. From the original course `labs/01-first-agent/` directory run:
+
+```sh
+node checks/acceptance.mjs /absolute/path/to/your/learner-project
+```
+
+Expect 16 independent checks; the unchanged starter must fail. The checker cannot prove planning or test-first history.
+
+5. After installing dependencies, disconnect network using an approved local method and rerun typecheck/build/tests/demos/acceptance. Alternatively set `NODE_OPTIONS` for those processes to require the supplied absolute `checks/no-network.cjs` path, preserving/restoring any previous value. The guard blocks standard Node TCP/TLS/HTTP/DNS/fetch/datagram calls; it is not an OS sandbox and does not cover native addons or arbitrary subprocess programs. Record the actual method/results/limits. Never disable company controls to follow an example.
+6. Complete evidence notes, leaving unavailable assistant checks unverified. Inspect changes and create a local checkpoint. For a fresh standalone learner folder only, initialize Git if needed (`git init -b learning`); configure identity through your approved process. Do not initialize Git in someone else's project.
+
+```sh
+git status --short
+git diff
+git add PLAN.md AGENTS.md CLAUDE.md LICENSE role.json docs src test package.json package-lock.json tsconfig.json tsconfig.build.json scripts .gitignore README.md
+git diff --cached
+git commit -m "Complete stage 1 issue lookup agent"
+git rev-parse HEAD
+```
+
+Stage only intended paths, plus any explicitly retained sanitized evidence. Exclude dependencies, build output, credentials, and unrelated files. Retain the hash in completion notes or the creator walkthrough. Company policy governs commits and reviews. Checkpoints do not establish production readiness; production `main` requires company checks/approvals. Branch/merge exercises begin in Stage 4.
+
+## Check
+
+Compare your spec with tests, original red/green records, traces, and repaired defect. Explain why rejected tools never ran and why final-at-limit is allowed. Record remaining limitations honestly.
+
+**Expected output:** repaired source, acceptance evidence, actual offline-check method/results, and commit hash. **Troubleshooting:** check stale `dist`, role configuration, step counts, or contract mismatches. Rebuild and investigate. A passing solution is not your walkthrough; this lab makes no real-model or production-security claim.

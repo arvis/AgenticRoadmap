@@ -4,6 +4,20 @@ Follow the creation of **From Developer to Agentic Developer**, a hands-on cours
 
 Entries cover decisions, working software, failures, and verified progress. Newest entries appear first.
 
+## 2026-11-11 — Implementing the Stage 1 console lab
+
+Implemented [the first lab](labs/01-first-agent/README.md): five practical lessons, a task/clarification worksheet, planning and instruction templates, an intentionally unfinished starter, and an independent reference solution. The console agent uses TypeScript/Node.js, a scripted model, one read-only issue tool, strict validation, explicit role permissions, exact step limits, and structured traces. The website and optional VS Code extension remain out of scope.
+
+Author verification used Windows, Node 24.11.0, and npm 11.6.1. Both packages passed separate clean locked installations. Actual behavioral red runs preceded the agent and parsing/scenario implementation; subsequent checks passed. A controlled off-by-one mutation failed three existing limit tests and made four calls instead of three; restoring the boundary repaired them. A later explicit-null limit regression was observed failing and fixed. The final suite has **50 passing tests**, and the reference solution passes **16 independent acceptance checks**. The untouched starter builds but is correctly rejected as incomplete.
+
+Actual checks also ran with standard Node network APIs disabled by a preload guard; TCP/fetch canaries confirmed the block before connection. This is a process-level verification method with documented limits, not an OS sandbox. No live provider was used. See [retained evidence](docs/evidence/stage-1/README.md) and [criterion-level walkthrough status](docs/walkthroughs/stage-1.md). The records distinguish captured test-first work from plumbing checked after implementation.
+
+**Still pending:** the creator personally completing the lessons from a fresh starter, learner-authored red/green records and commit, optional assistant instruction-loading verification, and actual learner-duration measurements. The implementation is checked; the course stage remains unverified until that walkthrough is complete.
+
+**Integration:** the scoped implementation is to be committed and merged into local `main` after checks, with its hash reported in the completion message. No remote push or deployment is part of this work.
+
+**Next:** take Stage 1 from [lesson 1](content/stage-1/01-plan-before-code.mdx), record the creator walkthrough, and fix instructions based on that experience before building the website.
+
 ## 2026-11-11 — Distinguishing development integration from production main
 
 Clarified [when to merge into main](PLAN.md#when-to-merge-into-main). For this repository, completed implementations are committed and merged into local `main` after required engineering checks/reviews pass, then the integrated result is verified. The whole course need not be finished first. Pending creator walkthroughs remain explicitly unverified and still block claims of verified course completion.

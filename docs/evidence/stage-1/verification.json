@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-11",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "node": "v24.11.0",
+  "npm": "11.6.1",
+  "network_control": "Node preload blocks standard networking; not OS isolation; native addons/arbitrary subprocess binaries are not covered",
+  "source_sha256": "d20fc1950b81d03443d1987bdc9d78aec06736857a9655fc36caa8e84522ddca",
+  "records": [
+    {
+      "label": "guard canary",
+      "exit": 0,
+      "stdout": "TCP and fetch blocked before connection"
+    },
+    {
+      "label": "starter check:setup",
+      "exit": 0
+    },
+    {
+      "label": "starter typecheck",
+      "exit": 0
+    },
+    {
+      "label": "starter build",
+      "exit": 0
+    },
+    {
+      "label": "starter acceptance",
+      "exit": 1,
+      "expected": "incomplete starter rejection"
+    },
+    {
+      "label": "solution check:setup",
+      "exit": 0
+    },
+    {
+      "label": "solution typecheck",
+      "exit": 0
+    },
+    {
+      "label": "solution build",
+      "exit": 0
+    },
+    {
+      "label": "solution test",
+      "exit": 0
+    },
+    {
+      "label": "solution acceptance",
+      "exit": 0,
+      "expected": "pass"
+    },
+    {
+      "label": "solution demo happy",
+      "exit": 0,
+      "status": "COMPLETED",
+      "steps": 2,
+      "toolCalls": 1
+    },
+    {
+      "label": "solution demo malformed",
+      "exit": 1,
+      "status": "FAILED",
+      "steps": 1,
+      "toolCalls": 0
+    },
+    {
+      "label": "solution demo denied",
+      "exit": 1,
+      "status": "FAILED",
+      "steps": 1,
+      "toolCalls": 0
+    },
+    {
+      "label": "solution demo looping",
+      "exit": 1,
+      "status": "FAILED",
+      "steps": 3,
+      "toolCalls": 3
+    },
+    {
+      "label": "solution demo missing",
+      "exit": 0,
+      "status": "NEEDS_INPUT",
+      "steps": 0,
+      "toolCalls": 0
+    }
+  ],
+  "creator_walkthrough": "pending",
+  "assistant_loading": "not tested",
+  "source_hash_format": "UTF-8 with LF line endings",
+  "final_tests": 50,
+  "final_acceptance": 16,
+  "clean_installs": {
+    "starter": {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit": 0,
+      "packages": 84
+    },
+    "solution": {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit": 0,
+      "packages": 84
+    }
+  }
+}

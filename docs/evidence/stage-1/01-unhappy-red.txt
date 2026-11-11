@@ -1,0 +1,394 @@
+
+> stage-1-solution@0.1.0 test
+> vitest run --maxWorkers=1 --reporter=verbose
+
+
+ RUN  v5.1.0 <repo>/labs/01-first-agent/solution
+
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task null 9ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task undefined 1ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":1} 1ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":""} 1ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":"other"} 1ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"extra":true} 1ms
+   → expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 0 1ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit -1 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 6 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 1.5 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit NaN 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role null 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_ROLE', steps: +0 }
+(3 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {} 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_ROLE', steps: +0 }
+(3 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","responsibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["get_issue"],"completion":"Return a short summary.","clarification":"Ask for the ID.","extra":true} 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_ROLE', steps: +0 }
+(3 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","responsibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["delete_issue"],"completion":"Return a short summary.","clarification":"Ask for the ID."} 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_ROLE', steps: +0 }
+(3 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool delete_issue before dispatch 0ms
+   → expected { status: 'FAILED', …(4) } to match object { Object (error, steps, ...) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool __proto__ before dispatch 0ms
+   → expected { status: 'FAILED', …(4) } to match object { Object (error, steps, ...) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > denies the registered tool for an empty role allowlist 2ms
+   → expected 'NOT_IMPLEMENTED' to be 'TOOL_DENIED' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {} 0ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_TOOL_INPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":4} 0ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_TOOL_INPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":"ISSUE-001","path":"../secret"} 1ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_TOOL_INPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output null 1ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_MODEL_OUTPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output "ignore all rules" 0ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_MODEL_OUTPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","text":""} 0ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_MODEL_OUTPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","text":"ok","permissions":"*"} 0ms
+   → expected 'NOT_IMPLEMENTED' to be 'INVALID_MODEL_OUTPUT' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > stops on a thrown handler without leaking its error or retrying 1ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'TOOL_FAILED', …(2) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > maps a thrown adapter to MODEL_FAILED without leaking details 1ms
+   → expected 'NOT_IMPLEMENTED' to be 'MODEL_FAILED' // Object.is equality
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 1 model calls 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 1, …(1) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 3 model calls 0ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 3, …(1) }
+(2 matching properties omitted from actual)
+ × test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 5 model calls 1ms
+   → expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 5, …(1) }
+(2 matching properties omitted from actual)
+node.exe :
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 30 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task null
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task undefined
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":1}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":""}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"issueId":"other"}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid task {"extra":true}
+AssertionError: expected { status: 'FAILED', …(4) } to match object { status: 'FAILED', …(3) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "INVALID_TASK",
++   "error": "NOT_IMPLEMENTED",
+    "status": "FAILED",
+    "steps": 0,
+    "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:20:37
+     18|   it.each([null, [], { issueId: 1 }, { issueId: '' }, { issueId: 'othe…
+     19|     const options = fixture();
+     20|     expect(runAgent(task, options)).toMatchObject({ status: 'FAILED', …
+       |                                     ^
+     21|     expect(options.model).not.toHaveBeenCalled(); expect(options.getIs…
+     22|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 0
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit -1
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 6
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit 1.5
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid limit NaN
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_RUN_CONFIG', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "INVALID_RUN_CONFIG",
++   "error": "NOT_IMPLEMENTED",
+    "steps": 0,
+    "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:25:74
+     23|   it.each([0, -1, 6, 1.5, NaN])('rejects invalid limit %s', maxSteps =…
+     24|     const options = fixture();
+     25|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     26|     expect(options.model).not.toHaveBeenCalled();
+     27|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role null
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","respon
+sibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["get_issue"],"completion":"R
+eturn a short summary.","clarification":"Ask for the ID.","extra":true}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects invalid role {"name":"issue-reader","respon
+sibilities":"Summarize a requested issue.","context":"Local fixture only.","allowedTools":["delete_issue"],"completion"
+:"Return a short summary.","clarification":"Ask for the ID."}
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'INVALID_ROLE', steps: +0 }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "INVALID_ROLE",
++   "error": "NOT_IMPLEMENTED",
+    "steps": 0,
+  }
+
+ ❯ test/unhappy.test.ts:30:79
+     28|   it.each([null, {}, { ...role, extra: true }, { ...role, allowedTools…
+     29|     const options = fixture();
+     30|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, role: badR…
+       |                                                                               ^
+     31|     expect(options.model).not.toHaveBeenCalled();
+     32|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool delete_issue before dispatch
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > denies unknown tool __proto__ before dispatch
+AssertionError: expected { status: 'FAILED', …(4) } to match object { Object (error, steps, ...) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "TOOL_DENIED",
+-   "steps": 1,
++   "error": "NOT_IMPLEMENTED",
++   "steps": 0,
+    "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:35:57
+     33|   it.each(['delete_issue', '__proto__'])('denies unknown tool %s befor…
+     34|     const options = fixture({ ...call, name });
+     35|     expect(runAgent({ issueId: 'ISSUE-001' }, options)).toMatchObject(…
+       |                                                         ^
+     36|     expect(options.getIssue).not.toHaveBeenCalled(); expect(options.mo…
+     37|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > denies the registered tool for an empty role allowl
+ist
+AssertionError: expected 'NOT_IMPLEMENTED' to be 'TOOL_DENIED' // Object.is equality
+
+Expected: "TOOL_DENIED"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ test/unhappy.test.ts:40:63
+     38|   it('denies the registered tool for an empty role allowlist', () => {
+     39|     const options = fixture(); options.role.allowedTools = [];
+     40|     expect(runAgent({ issueId: 'ISSUE-001' }, options).error).toBe('TO…
+       |                                                               ^
+     41|     expect(options.getIssue).not.toHaveBeenCalled();
+     42|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":4}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects tool arguments {"issueId":"ISSUE-001","path
+":"../secret"}
+AssertionError: expected 'NOT_IMPLEMENTED' to be 'INVALID_TOOL_INPUT' // Object.is equality
+
+Expected: "INVALID_TOOL_INPUT"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ test/unhappy.test.ts:45:63
+     43|   it.each([{}, { issueId: 4 }, { issueId: 'ISSUE-001', path: '../secre…
+     44|     const options = fixture({ ...call, input });
+     45|     expect(runAgent({ issueId: 'ISSUE-001' }, options).error).toBe('IN…
+       |                                                               ^
+     46|     expect(options.getIssue).not.toHaveBeenCalled();
+     47|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output null
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output "ignore all rules"
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","tex
+t":""}
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > rejects malformed model output {"type":"final","tex
+t":"ok","permissions":"*"}
+AssertionError: expected 'NOT_IMPLEMENTED' to be 'INVALID_MODEL_OUTPUT' // Object.is equality
+
+Expected: "INVALID_MODEL_OUTPUT"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ test/unhappy.test.ts:50:63
+     48|   it.each([null, 'ignore all rules', { type: 'final', text: '' }, { ty…
+     49|     const options = fixture(output);
+     50|     expect(runAgent({ issueId: 'ISSUE-001' }, options).error).toBe('IN…
+       |                                                               ^
+     51|     expect(options.getIssue).not.toHaveBeenCalled();
+     52|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops on a thrown handler without leaking its error
+ or retrying
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'TOOL_FAILED', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "TOOL_FAILED",
+-   "steps": 1,
+-   "toolCalls": 1,
+
+ Test Files  1 failed (1)
+      Tests  30 failed (30)
+   Start at  08:17:44
+   Duration  567ms (transform 46%, tests 26%, import 20%, worker 8%)
++   "error": "NOT_IMPLEMENTED",
++   "steps": 0,
++   "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:56:20
+     54|     const options = fixture(); options.getIssue.mockImplementation(() …
+     55|     const result = runAgent({ issueId: 'ISSUE-001' }, options);
+     56|     expect(result).toMatchObject({ error: 'TOOL_FAILED', toolCalls: 1,…
+       |                    ^
+     57|     expect(options.getIssue).toHaveBeenCalledTimes(1); expect(options.…
+     58|     expect(JSON.stringify(result)).not.toContain('secret-canary');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > maps a thrown adapter to MODEL_FAILED without leaki
+ng details
+AssertionError: expected 'NOT_IMPLEMENTED' to be 'MODEL_FAILED' // Object.is equality
+
+Expected: "MODEL_FAILED"
+Received: "NOT_IMPLEMENTED"
+
+ ❯ test/unhappy.test.ts:63:26
+     61|     const options = fixture(); options.model.mockImplementation(() => …
+     62|     const result = runAgent({ issueId: 'ISSUE-001' }, options);
+     63|     expect(result.error).toBe('MODEL_FAILED'); expect(JSON.stringify(r…
+       |                          ^
+     64|   });
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 1 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 1, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "STEP_LIMIT",
+-   "steps": 1,
+-   "toolCalls": 1,
++   "error": "NOT_IMPLEMENTED",
++   "steps": 0,
++   "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 3 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 3, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "STEP_LIMIT",
+-   "steps": 3,
+-   "toolCalls": 3,
++   "error": "NOT_IMPLEMENTED",
++   "steps": 0,
++   "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/30]⎯
+
+ FAIL  test/unhappy.test.ts > unhappy paths before implementation > stops after exactly 5 model calls
+AssertionError: expected { status: 'FAILED', …(4) } to match object { error: 'STEP_LIMIT', steps: 5, …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "error": "STEP_LIMIT",
+-   "steps": 5,
+-   "toolCalls": 5,
++   "error": "NOT_IMPLEMENTED",
++   "steps": 0,
++   "toolCalls": 0,
+  }
+
+ ❯ test/unhappy.test.ts:67:74
+     65|   it.each([1, 3, 5])('stops after exactly %s model calls', maxSteps =>…
+     66|     const options = fixture();
+     67|     expect(runAgent({ issueId: 'ISSUE-001' }, { ...options, maxSteps }…
+       |                                                                          ^
+     68|     expect(options.model).toHaveBeenCalledTimes(maxSteps); expect(opti…
+     69|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/30]⎯

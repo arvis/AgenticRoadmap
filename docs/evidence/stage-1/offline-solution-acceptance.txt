@@ -1,0 +1,17 @@
+PASS CLI happy ISSUE-001
+PASS CLI malformed ISSUE-001
+PASS CLI denied ISSUE-001
+PASS CLI looping ISSUE-001
+PASS CLI happy (missing ID)
+PASS CLI rejects arbitrary scenario and output options
+PASS malformed task cannot call model or tool
+PASS invalid budget cannot start
+PASS invalid role cannot start
+PASS empty allowlist denies handler execution
+PASS extra model fields rejected
+PASS extra tool arguments rejected
+PASS tool exceptions are bounded and not leaked
+PASS unknown fixture issue fails
+PASS final answer at limit 1
+PASS final answer at limit 5
+16 acceptance checks passed. This verifies fixture behavior, not learner planning or production readiness.

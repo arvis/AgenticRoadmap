@@ -1,0 +1,42 @@
+# 3. Write the unhappy-path tests first
+
+**Task:** describe failures before implementing controls. **Prerequisites:** completed plan and working setup. **Estimate:** 45–75 minutes, unvalidated.
+
+## Do
+
+1. Read `src/contracts.ts`. The callable is `runAgent(task, options)`; options contain a role and synchronous mock model, with optional `maxSteps` and `getIssue`. Tests belong in `test/*.test.ts`.
+2. Create `test/unhappy.test.ts`. Begin with this test, then extend it using your acceptance criteria:
+
+```ts
+import { it, expect, vi } from 'vitest';
+import { runAgent } from '../src/agent.js';
+const role = { name: 'reader', responsibilities: 'Read', context: 'Fixture',
+  allowedTools: ['get_issue'], completion: 'Summarize', clarification: 'Ask' };
+it('rejects invalid input before model or tool calls', () => {
+  const model = vi.fn();
+  const getIssue = vi.fn();
+  const result = runAgent({ issueId: 123 }, { role, model, getIssue });
+  expect(result.error).toBe('INVALID_TASK');
+  expect(model).not.toHaveBeenCalled();
+  expect(getIssue).not.toHaveBeenCalled();
+});
+```
+
+3. Add invalid role/budget, unknown tool, empty allowlist, malformed arguments/extra fields, malformed model output, handler/adapter exception, unknown issue, and repeated-call cases. Assert handler non-execution on rejection and exact model/handler calls at exhaustion. Use spies: a denial message alone is insufficient.
+4. Before changing `src/agent.ts`, run:
+
+```sh
+npm run typecheck
+npm test -- --reporter=verbose
+```
+
+5. Save actual output, exit code, command, and source snapshot in `docs/test-evidence.md`. `git hash-object src/agent.ts` identifies a file before a commit. Expected red compares required behavior with `NOT_IMPLEMENTED`; missing imports/packages or broken test syntax are harness errors to fix first.
+6. Add `test/happy.test.ts` before implementation: missing input asks a question with zero calls; a valid tool response reaches the model and completes; a final response at the last allowed call succeeds. Run and record this red result too.
+
+## Check
+
+Both groups have original behavioral red evidence before controls or success are implemented. Tests exercise the callable and assert outputs/counts; they do not compare a fixture with itself. A finished green suite cannot reconstruct test-first evidence.
+
+**Expected output:** your tests and original red records. **Troubleshooting:** use `.js` extensions in NodeNext imports; installed Vitest resolves TypeScript during tests. Do not change assertions to accept `NOT_IMPLEMENTED`. Consult [Vitest assertions/spies](https://vitest.dev/guide/) when needed.
+
+Next: [implement and run](04-run-the-agent.mdx).
